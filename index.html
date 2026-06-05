@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 
-                <!-- TOKEN 1: THE SCENE & SUSPECTS -->
+                <!-- TOKEN 1: THE SCENE & SUSPECTS (📅 / 👥 / 📍) -->
                 <div class="bg-white border-4 border-amber-900 rounded-3xl p-5 shadow-xs border-l-[16px] border-l-blue-400" x-show="caseFile.engine">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-1.5">
                         📍 <span x-text="lang === 'en' ? 'Evidence Token 1: The Scene & Characters' : '案件證據 1：鎖定案發環境與人物'"></span>
@@ -101,7 +101,9 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <!-- When -->
                         <div>
-                            <label class="block text-xs font-black text-slate-600 mb-1" x-text="lang === 'en' ? 'Incident Time?' : '案發時間？'"></label>
+                            <label class="block text-xs font-black text-slate-600 mb-1 flex items-center gap-1">
+                                📅 <span x-text="lang === 'en' ? 'The Time of the Incident:' : '案發時間與環境：'"></span>
+                            </label>
                             <select x-model="caseFile.when" class="w-full text-xs border-2 border-slate-200 p-2.5 rounded-xl bg-slate-50 font-sans">
                                 <option value="" x-text="lang === 'en' ? '-- Choose Timeline --' : '-- 選擇時間線 --'"></option>
                                 <template x-for="t in (lang === 'en' ? lists.when.en : lists.when.zh)"><option :value="t" x-text="t"></option></template>
@@ -110,7 +112,9 @@
                         </div>
                         <!-- Who -->
                         <div>
-                            <label class="block text-xs font-black text-slate-600 mb-1" x-text="lang === 'en' ? 'The Suspects / Witnesses?' : '涉及嫌疑人 / 目擊者？'"></label>
+                            <label class="block text-xs font-black text-slate-600 mb-1 flex items-center gap-1">
+                                👥 <span x-text="lang === 'en' ? 'The Suspects & Witnesses:' : '涉及人物與目擊者：'"></span>
+                            </label>
                             <select x-model="caseFile.who" class="w-full text-xs border-2 border-slate-200 p-2.5 rounded-xl bg-slate-50 font-sans">
                                 <option value="" x-text="lang === 'en' ? '-- Identify Identity --' : '-- 識別人物身份 --'"></option>
                                 <template x-for="p in (lang === 'en' ? lists.who.en : lists.who.zh)"><option :value="p" x-text="p"></option></template>
@@ -119,7 +123,9 @@
                         </div>
                         <!-- Where -->
                         <div>
-                            <label class="block text-xs font-black text-slate-600 mb-1" x-text="lang === 'en' ? 'The Incident Scene?' : '案發明確地點位置？'"></label>
+                            <label class="block text-xs font-black text-slate-600 mb-1 flex items-center gap-1">
+                                📍 <span x-text="lang === 'en' ? 'The Scene of the Incident:' : '案發明確地點位置：'"></span>
+                            </label>
                             <select x-model="caseFile.where" class="w-full text-xs border-2 border-slate-200 p-2.5 rounded-xl bg-slate-50 font-sans">
                                 <option value="" x-text="lang === 'en' ? '-- Pinpoint Spot --' : '-- 標記具體位置 --'"></option>
                                 <template x-for="w in (lang === 'en' ? lists.where.en : lists.where.zh)"><option :value="w" x-text="w"></option></template>
@@ -130,7 +136,7 @@
                 </div>
 
                 <!-- TOKEN 2: INVESTIGATING THE CASE TYPE -->
-                <div class="bg-white border-4 border-amber-900 rounded-3xl p-5 shadow-xs border-l-[16px] border-l-orange-400" x-show="hasContext()">
+                <div class="bg-white p-5 border-4 border-amber-900 rounded-3xl shadow-xs border-l-[16px] border-l-orange-400" x-show="hasContext()">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
                         🔍 <span x-text="lang === 'en' ? 'Evidence Token 2: Categorize the Incident Type' : '案件證據 2：歸類案發事件性質'"></span>
                     </h3>
@@ -146,12 +152,12 @@
                     </div>
                 </div>
 
-                <!-- TOKEN 3: THE HIDDEN MOTIVE / INITIATING TRIGGER (為什麼這樣做？) -->
-                <div class="bg-white border-4 border-amber-900 rounded-3xl p-5 shadow-xs border-l-[16px] border-l-yellow-400" x-show="caseFile.category">
+                <!-- TOKEN 3: THE HIDDEN MOTIVE (💡 Why did they act?) -->
+                <div class="bg-white p-5 border-4 border-amber-900 rounded-3xl shadow-xs border-l-[16px] border-l-yellow-400" x-show="caseFile.category">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
-                        💡 <span x-text="lang === 'en' ? 'Evidence Token 3: Deduce Motive (Why did they act?)' : '案件證據 3：偵查核心動機（對方點解要咁做？）'"></span>
+                        💡 <span x-text="lang === 'en' ? 'Evidence Token 3: The Hidden Motive / Why did they act?' : '案件證據 3：探查核心起因 / 對方點解咁做？'"></span>
                     </h3>
-                    <p class="text-xs text-slate-500 mb-4" x-text="lang === 'en' ? 'As a detective, what do you think triggered their choice?' : '做個客觀嘅神探，你猜測究竟係咩導火線令對方做出呢個舉動？'"></p>
+                    <p class="text-xs text-slate-500 mb-4" x-text="lang === 'en' ? 'As a detective, what do you think triggered their choice?' : '做個客觀嘅神探，你猜測究竟係咩深層原因或導火線令對方做出呢個舉動？'"></p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <template x-for="w in getWhyOptions()">
@@ -162,15 +168,17 @@
                         </template>
                     </div>
                     <div class="mt-3 p-3 bg-amber-50/30 rounded-2xl border border-amber-200">
-                        <label class="block text-xs font-black text-amber-900 mb-1" x-text="lang === 'en' ? 'Or log custom detective hypothesis:' : '或由偵探手動輸入其他深層動機/起因：'"></label>
-                        <textarea x-model="caseFile.whyCustom" rows="2" class="w-full text-xs bg-white border border-slate-300 rounded-xl p-2.5 font-sans" :placeholder="lang === 'en' ? 'Maybe they thought...' : '例如：可能佢以為我想搶玩具 / 佢頭先俾人話完好唔開心... '"></textarea>
+                        <label class="block text-xs font-black text-amber-900 mb-1 flex items-center gap-1">
+                            ✏️ <span x-text="lang === 'en' ? 'Or log custom detective hypothesis:' : '或由偵探手動補充起因分析：'"></span>
+                        </label>
+                        <textarea x-model="caseFile.whyCustom" rows="2" class="w-full text-xs bg-white border border-slate-300 rounded-xl p-2.5 font-sans" :placeholder="lang === 'en' ? 'Maybe they thought...' : '例如：可能佢以為我想搶玩具 / 佢頭先同人吵架心情唔好... '"></textarea>
                     </div>
                 </div>
 
-                <!-- TOKEN 4: THE SPARK / PROCESS CLUES (經過) -->
-                <div class="bg-white border-4 border-amber-900 rounded-3xl p-5 shadow-xs border-l-[16px] border-l-pink-400" x-show="caseFile.whyReason || caseFile.whyCustom">
+                <!-- TOKEN 4: THE SPARK / PROCESS CLUES (💥 The Spark & Clues) -->
+                <div class="bg-white p-5 border-4 border-amber-900 rounded-3xl shadow-xs border-l-[16px] border-l-pink-400" x-show="caseFile.whyReason || caseFile.whyCustom">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
-                        📌 <span x-text="lang === 'en' ? 'Evidence Token 4: Reconstruct Clues (The Process)' : '案件證據 4：還原事發現場線索（事情具體經過）'"></span>
+                        💥 <span x-text="lang === 'en' ? 'Evidence Token 4: The Spark & Clues (What Happened)' : '案件證據 4：還原事發經過細節（現場核心線索）'"></span>
                     </h3>
                     <div class="space-y-2">
                         <template x-for="p in getPresetsForCategory()">
@@ -180,16 +188,18 @@
                             </label>
                         </template>
                         <div class="mt-3 p-3 bg-pink-50/20 rounded-2xl border border-pink-200">
-                            <label class="block text-xs font-black text-pink-900 mb-1" x-text="lang === 'en' ? 'Type detailed sequential clues manually:' : '手動詳細記錄具體事發連貫經過（加強語言表達）：'"></label>
-                            <textarea x-model="caseFile.processCustom" rows="3" class="w-full text-xs bg-white border border-slate-300 rounded-xl p-2.5 font-sans" :placeholder="lang === 'en' ? 'First they... then...' : '例如：佢衝過嚟一手搶走咗我本圖書，我叫佢還，佢仲推開我... '"></textarea>
+                            <label class="block text-xs font-black text-pink-900 mb-1 flex items-center gap-1">
+                                ✏️ <span x-text="lang === 'en' ? 'Type detailed sequential clues manually:' : '手動詳細記錄事發經過細節（還原事情發展）：'"></span>
+                            </label>
+                            <textarea x-model="caseFile.processCustom" rows="3" class="w-full text-xs bg-white border border-slate-300 rounded-xl p-2.5 font-sans" :placeholder="lang === 'en' ? 'First they... then...' : '例如：佢先衝過嚟一手搶走咗我本圖書，我叫佢還，佢仲轉身推開我... '"></textarea>
                         </div>
                     </div>
                 </div>
 
-                <!-- TOKEN 5: THE FINAL RESOLUTION OUTCOME (結果) -->
-                <div class="bg-white border-4 border-amber-900 rounded-3xl p-5 shadow-xs border-l-[16px] border-l-purple-400" x-show="caseFile.presetText || caseFile.processCustom">
+                <!-- TOKEN 5: THE FINAL RESOLUTION OUTCOME (🎬 The Final Resolution) -->
+                <div class="bg-white p-5 border-4 border-amber-900 rounded-3xl shadow-xs border-l-[16px] border-l-purple-400" x-show="caseFile.presetText || caseFile.processCustom">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
-                        🎬 <span x-text="lang === 'en' ? 'Evidence Token 5: Final Case Outcome' : '案件證據 5：追踪最終結案後果（最後的結果）'"></span>
+                        🎬 <span x-text="lang === 'en' ? 'Evidence Token 5: The Final Resolution (Outcome)' : '案件證據 5：追踪事後後果與結局（最終發展結局）'"></span>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <template x-for="o in (lang === 'en' ? lists.outcome.en : lists.outcome.zh)">
@@ -202,10 +212,10 @@
                     <textarea x-model="caseFile.outcomeCustom" rows="2" class="w-full text-xs border border-slate-300 rounded-xl p-2.5 mt-3 font-sans" :placeholder="lang === 'en' ? 'Or write any alternative case resolution...' : '或手動寫低最終引發嘅其他局面與結果...'"></textarea>
                 </div>
 
-                <!-- TOKEN 6: BODY REACTION & FEELING EXPLORATION (感受) -->
-                <div class="bg-white border-4 border-amber-900 rounded-3xl p-5 shadow-xs border-l-[16px] border-l-red-400" x-show="caseFile.outcome || caseFile.outcomeCustom">
+                <!-- TOKEN 6: BODY REACTION & FEELING EXPLORATION -->
+                <div class="bg-white p-5 border-4 border-amber-900 rounded-3xl shadow-xs border-l-[16px] border-l-red-400" x-show="caseFile.outcome || caseFile.outcomeCustom">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-1.5">
-                        ❤️ <span x-text="lang === 'en' ? 'Evidence Token 6: Internal Physical & Emotional Reaction' : '案件證據 6：偵查偵探身心感受（體內生理與內心感受）'"></span>
+                        ❤️ <span x-text="lang === 'en' ? 'Evidence Token 6: Internal Physical & Emotional Reaction' : '案件證據 6：偵查身心感受與生理反應'"></span>
                     </h3>
                     <div class="space-y-4">
                         <div>
@@ -243,17 +253,17 @@
                     
                     <!-- Synthesized Case Report Output Block -->
                     <div class="text-xs space-y-5 leading-relaxed min-h-[420px]">
-                        <p class="bg-amber-900/60 border-2 border-amber-800 p-4 rounded-2xl block shadow-inner text-amber-100 italic font-medium leading-loose border-dashed" x-html="getCompiledDetectiveStory()"></p>
+                        <p class="bg-amber-900/60 border-2 border-amber-800 p-4 rounded-2xl block shadow-inner text-amber-100 italic font-medium leading-loose border-dashed animate-fadeIn" x-html="getCompiledDetectiveStory()"></p>
                         
                         <div class="pt-4 border-t border-amber-900 space-y-2 text-[11px] text-amber-300 font-sans">
-                            <div><strong>[Timeline/時間]:</strong> <span class="text-white" x-text="caseFile.whenCustom || caseFile.when || '...'"></span></div>
-                            <div><strong>[Witness & Suspect/人物]:</strong> <span class="text-white" x-text="caseFile.whoCustom || caseFile.who || '...'"></span></div>
-                            <div><strong>[Crime Scene/地點]:</strong> <span class="text-white" x-text="caseFile.whereCustom || caseFile.where || '...'"></span></div>
-                            <div><strong>[Incident Type/核心性質]:</strong> <span class="text-white" x-text="getCategoryLabel() || '...'"></span></div>
-                            <div><strong>[Hidden Motive/起因]:</strong> <span class="text-white" x-text="caseFile.whyCustom || caseFile.whyReason || '...'"></span></div>
-                            <div><strong>[Action Clues/具體經過]:</strong> <span class="text-white" x-text="caseFile.processCustom || caseFile.presetText || '...'"></span></div>
-                            <div><strong>[Case Outcome/結果]:</strong> <span class="text-white" x-text="caseFile.outcomeCustom || caseFile.outcome || '...'"></span></div>
-                            <div><strong>[Deduced Impact/身心感受]:</strong> <span class="text-white" x-text="(caseFile.emotionCustom || caseFile.emotion || '...') + ' + ' + (caseFile.body || '...')"></span></div>
+                            <div><strong>📅 [Timeline/時間]:</strong> <span class="text-white" x-text="caseFile.whenCustom || caseFile.when || '...'"></span></div>
+                            <div><strong>👥 [Suspects/人物]:</strong> <span class="text-white" x-text="caseFile.whoCustom || caseFile.who || '...'"></span></div>
+                            <div><strong>📍 [Crime Scene/地點]:</strong> <span class="text-white" x-text="caseFile.whereCustom || caseFile.where || '...'"></span></div>
+                            <div><strong>🔍 [Incident Type/性質]:</strong> <span class="text-white" x-text="getCategoryLabel() || '...'"></span></div>
+                            <div><strong>💡 [Motive/起因]:</strong> <span class="text-white" x-text="caseFile.whyCustom || caseFile.whyReason || '...'"></span></div>
+                            <div><strong>💥 [Clues/事發經過]:</strong> <span class="text-white" x-text="caseFile.processCustom || caseFile.presetText || '...'"></span></div>
+                            <div><strong>🎬 [Resolution/結局]:</strong> <span class="text-white" x-text="caseFile.outcomeCustom || caseFile.outcome || '...'"></span></div>
+                            <div><strong>❤️ [Impact/感受]:</strong> <span class="text-white" x-text="(caseFile.emotionCustom || caseFile.emotion || '...') + ' + ' + (caseFile.body || '...')"></span></div>
                         </div>
                     </div>
 
@@ -297,7 +307,7 @@
                       why_zh: ["對方單純自私貪玩，冇考慮到我感受", "對方想喺群體/同學面前顯得自己好威", "對方特登想營造尷尬，令我無地自容", "對方以為這是一個好笑嘅玩笑"],
                       why_en: ["Selfish thrill optimization", "Status showboating to group observers", "Calculated public embarrassment targeting", "Misjudged harmless play context"],
                       presets_zh: ["用好衰嘅面色、極具攻擊性或好惡嘅語氣同我講嘢", "喺度手指指笑我，而唔係想友善同我玩", "講左句好難聽、好挑釁嘅字眼想打擊我"],
-                      presets_en: ["Deployed intimidating inflection or toxic face", "Conducted peer group dynamic mocking laughter", "Vocalized degrading vocabulary expressions"]
+                      presets_en: ["Used intimidating inflection or toxic face", "Conducted peer group dynamic mocking laughter", "Vocalized degrading vocabulary expressions"]
                     },
                     { id: 'bullied', label_en: 'Being Bullied', label_zh: '被欺負 / 霸凌', icon: '❌', active: true,
                       why_zh: ["對方企圖建立支配權力，顯得自己好巴閉", "對方想強迫我屈服，聽晒佢安排", "對方主觀睇我不順眼，故意長期針對我", "對方內心自卑，透過傷害他人平衡心理"],
@@ -371,17 +381,17 @@
 
                     if (this.lang === 'zh') {
                         return `🕵️‍♂️ <b>偵探案件備忘錄：</b><br><br>` +
-                               `本局查明在 <b>${time}</b>，當事人與 <b>${people}</b> 共同身處在 <b>${place}</b> 的第一現場。<br><br>` +
-                               `突然間發生了突發社交衝突。根據客觀動機推查，對方之所以採取該舉動，背後導火線是由於：<u>${why}</u>。<br><br>` +
-                               `還原現場經過細節如下：<b>${process}</b>。<br><br>` +
-                               `該起衝突最後直接引發了以下結果結局：<b>${out}</b>。<br><br>` +
-                               `經心理測量，此案件令當事人內心感到 <b>${feel}</b>，體內同時出現了 <b>${physical}</b> 的生理應激反應。本案線索搜集完畢。`;
+                               `📅 案發時間在 <b>${time}</b>，當事人與 👥 嫌疑人 <b>${people}</b> 共同身處在 📍 案發現場 <b>${place}</b>。<br><br>` +
+                               `💡 根據客觀動機推查，對方之所以採取該舉動，背後隱藏的起因是由於：<u>${why}</u>。<br><br>` +
+                               `💥 還原現場經過細節與線索如下：<b>${process}</b>。<br><br>` +
+                               `🎬 該起衝突最後直接引發了以下大結局結果：<b>${out}</b>。<br><br>` +
+                               `經探查，此案件令當事人內心感到 <b>${feel}</b>，體內同時出現了 <b>${physical}</b> 的身心警報反應。線索搜集完畢！`;
                     } else {
                         return `🕵️‍♂️ <b>Official Case Memorandum:</b><br><br>` +
-                               `The Agency confirms that during <b>${time}</b>, the subject was with <b>${people}</b> at the crime scene located at <b>${place}</b>.<br><br>` +
-                               `An active social disruption triggered. Based on circumstantial deduction, the opposite character selected this path because: <u>${why}</u>.<br><br>` +
-                               `The reconstructed behavioral process details show: <b>${process}</b>.<br><br>` +
-                               `Consequently, this conflict process directly generated the final outcome: <b>${out}</b>.<br><br>` +
+                               `📅 The Agency confirms that during <b>${time}</b>, the subject was with 👥 Suspect <b>${people}</b> at 📍 Crime Scene located at <b>${place}</b>.<br><br>` +
+                               `💡 Based on circumstantial deduction, the opposite character selected this path because of the Motive: <u>${why}</u>.<br><br>` +
+                               `💥 The reconstructed Action Clues show: <b>${process}</b>.<br><br>` +
+                               `🎬 Consequently, this conflict generated the Final Resolution: <b>${out}</b>.<br><br>` +
                                `Internal tracking confirms the subject experienced a status of <b>${feel}</b>, while their physical engine exhibited signs of <b>${physical}</b>. Investigation concluded.`;
                     }
                 }
